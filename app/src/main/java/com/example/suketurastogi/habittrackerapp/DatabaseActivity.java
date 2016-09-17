@@ -1,12 +1,13 @@
 package com.example.suketurastogi.habittrackerapp;
 
+import android.content.Context;
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class HabitTrackerActivity extends AppCompatActivity {
+public class DatabaseActivity extends AppCompatActivity {
 
-    Contract habitDb;
+    DatabaseHelper habitDb;
 
     Integer hoursOfSleep;
     String breakfast;
@@ -21,7 +22,7 @@ public class HabitTrackerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        habitDb = new Contract(this);
+        habitDb = new DatabaseHelper(this);
 
         res = habitDb.getAllData();
     }
@@ -70,9 +71,13 @@ public class HabitTrackerActivity extends AppCompatActivity {
         }
     }
 
-    //Call this method to Drop whole table & Create a new one.
-    public void deleteDatabase(){
+    //Call this method to Delete whole table.
+    public void deleteTable(){
+        habitDb.deleteTable();
+    }
 
-        habitDb.deleteDatabase();
+    //Call this method to delete whole database.
+    public void deleteDatabase(Context ctx) {
+        ctx.deleteDatabase(habitDb.getDatabaseName());
     }
 }

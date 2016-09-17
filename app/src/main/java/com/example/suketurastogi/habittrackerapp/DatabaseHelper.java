@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(DatabaseContract.Table.CREATE_TABLE+ " (ID INTEGER PRIMARY KEY AUTOINCREMENT,HOURS_OF_SLEEP INTEGER,BREAKFAST TEXT,LUNCH TEXT,DINNER TEXT)");
+        db.execSQL(DatabaseContract.Table.CREATE_TABLE);
     }
 
     @Override
